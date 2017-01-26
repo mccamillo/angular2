@@ -1,3 +1,97 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="over" class="app-sidenav">
+    <md-toolbar>Componentes</md-toolbar>
+  </md-sidenav>
+
+  <div>
+
+    <md-toolbar color="primary">
+      <button class="app-icon-button" (click)="sidenav.toggle()">
+        <i class="material-icons app-toolbar-menu">menu</i>
+      </button>
+      <a href="#/" hide-gt-md><img class="header-logo" src="assets/images/Logo_MATERA.png" alt=""></a>
+      Padrão Visual Matera
+    </md-toolbar>
+    <div class="app-content">
+
+      <md-card>
+        <app-my-fieldset [legend]="'Event Binding'">
+          <app-event-binding (clicked)="onClicked($event)"></app-event-binding>
+        </app-my-fieldset>
+      </md-card>
+
+      <md-card>
+        <app-my-fieldset [legend]="'This is the legend passed as parameter'">Fieldset Content</app-my-fieldset>
+      </md-card>
+
+      <md-card>
+        <button md-button>FLAT</button>
+        <button md-raised-button md-tooltip="This is a tooltip!">RAISED</button>
+        <button md-raised-button color="primary">PRIMARY RAISED</button>
+        <button md-raised-button color="accent">ACCENT RAISED</button>
+      </md-card>
+
+      <md-card>
+        <md-checkbox>Unchecked</md-checkbox>
+        <md-checkbox [checked]="true">Checked</md-checkbox>
+        <md-checkbox [indeterminate]="true">Indeterminate</md-checkbox>
+        <md-checkbox [disabled]="true">Disabled</md-checkbox>
+      </md-card>
+
+      <md-card>
+        <md-radio-button name="symbol">Alpha</md-radio-button>
+        <md-radio-button name="symbol">Beta</md-radio-button>
+        <md-radio-button name="symbol" disabled>Gamma</md-radio-button>
+      </md-card>
+
+      <md-card class="app-input-section">
+        <md-input placeholder="First name"></md-input>
+
+        <md-input #nickname placeholder="Nickname" maxlength="50">
+          <md-hint align="end">
+            {{nickname.characterCount}} / 50
+          </md-hint>
+        </md-input>
+
+        <md-input>
+          <md-placeholder>
+            <i class="material-icons app-input-icon">android</i> Favorite phone
+          </md-placeholder>
+        </md-input>
+
+        <md-input placeholder="Motorcycle model">
+          <span md-prefix>
+            <i class="material-icons app-input-icon">motorcycle</i>
+          </span>
+        </md-input>
+      </md-card>
+
+      <md-card>
+        <md-spinner class="app-spinner"></md-spinner>
+        <md-spinner color="accent" class="app-spinner"></md-spinner>
+      </md-card>
+
+      <md-card>
+        <label>
+          Indeterminate progress-bar
+          <md-progress-bar
+            class="app-progress"
+            mode="indeterminate"
+            aria-label="Indeterminate progress-bar example"></md-progress-bar>
+        </label>
+
+        <label>
+          Determinate progress bar - {{progress}}%
+          <md-progress-bar
+            class="app-progress"
+            color="accent"
+            mode="determinate"
+            [value]="progress"
+            aria-label="Determinate progress-bar example"></md-progress-bar>
+        </label>
+      </md-card>
+
+    </div>
+  </div>
+
+  </md-sidenav-container>
